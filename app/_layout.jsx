@@ -1,18 +1,30 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { Slot, Stack } from "expo-router";
+
+const RootLayout = () => {
+
+    return(
+        <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+        </Stack>
+    )
 
 
-const App = () => {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-    <Text>Aora!</Text>
-    
-    <StatusBar style="auto" />
-  </View>
-  );
+//   return (
+//     <>
+//       <Text>Header</Text>
+//       <Slot />
+//       <Text>Footer</Text>
+//     </>
+//   );
+  //   return (
+  //     <View>
+  //       <Text>RootLayout</Text>
+  //     </View>
+  //   )
 };
 
+export default RootLayout;
 
-
-export default App;
+const styles = StyleSheet.create({});
