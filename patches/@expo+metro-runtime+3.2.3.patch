@@ -1,0 +1,27 @@
+diff --git a/node_modules/@expo/metro-runtime/build/LoadingView.native.js b/node_modules/@expo/metro-runtime/build/LoadingView.native.js
+index 72e91c3..ad3d171 100644
+--- a/node_modules/@expo/metro-runtime/build/LoadingView.native.js
++++ b/node_modules/@expo/metro-runtime/build/LoadingView.native.js
+@@ -1,15 +1,13 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ let LoadingView;
++
+ try {
++    // Attempt to load LoadingView (older versions)
+     LoadingView = require('react-native/Libraries/Utilities/LoadingView');
++} catch (error) {
++    // Fall back to an empty component if LoadingView or DevLoadingView does not exist
++    LoadingView = () => null;
+ }
+-catch {
+-    // In react-native 0.75.0 LoadingView was renamed to DevLoadingView
+-    try {
+-        LoadingView = require('react-native/Libraries/Utilities/DevLoadingView');
+-    }
+-    catch { }
+-}
++
+ exports.default = LoadingView;
+-//# sourceMappingURL=LoadingView.native.js.map
+\ No newline at end of file

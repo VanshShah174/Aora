@@ -1,41 +1,52 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React, { useEffect } from "react";
-import { Slot, SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
 
+// Prevent splash screen from auto-hiding until fonts are loaded
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
+  const [fontsLoaded, error] = useFonts({
+    "Poppins-Black": require("./fonts/Poppins-Black.ttf"),
+    "Poppins-Bold": require("./fonts/Poppins-Bold.ttf"),
+    "Poppins-ExtraBold": require("./fonts/Poppins-ExtraBold.ttf"),
+    "Poppins-ExtraLight": require("./fonts/Poppins-ExtraLight.ttf"),
+    "Poppins-Light": require("./fonts/Poppins-Light.ttf"),
+    "Poppins-Medium": require("./fonts/Poppins-Medium.ttf"),
+    "Poppins-Regular": require("./fonts/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("./fonts/Poppins-SemiBold.ttf"),
+    "Poppins-Thin": require("./fonts/Poppins-Thin.ttf"),
+  });
 
-    const [fontsLoaded, error] = useFonts({
-        "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
-        "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
-        "Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
-        "Poppins-ExtraLight": require("../assets/fonts/Poppins-ExtraLight.ttf"),
-        "Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
-        "Poppins-Medium": require("../assets/fonts/Poppins-Medium.ttf"),
-        "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
-        "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
-        "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
-      });
+  useEffect(() => {
+    if (error) {
+      console.error("Error loading fonts:", error);
+      return;
+    }
 
-      useEffect(() => {
-        if(error) throw error;
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, error]);
 
-        if(fontsLoaded) SplashScreen.hideAsync();
-      },[fontsLoaded, error])
+  if (!fontsLoaded) return null;
 
-      if(!fontsLoaded && error) return null;
+  return (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="/search/[query]" options={{ headerShown: false }} />
+    </Stack>
+  );
+};
 
-    return(
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="/search/[query]" options={{ headerShown: false }} />
+export default RootLayout;
 
-        </Stack>
-    )
+const styles = StyleSheet.create({});
+
+
 
 
 // function hideAsync(): Promise<boolean>
@@ -62,8 +73,4 @@ const RootLayout = () => {
   //       <Text>RootLayout</Text>
   //     </View>
   //   )
-};
 
-export default RootLayout;
-
-const styles = StyleSheet.create({});
