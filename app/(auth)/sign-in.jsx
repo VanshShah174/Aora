@@ -6,6 +6,9 @@ import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link } from "expo-router";
+import { signIn } from "../../lib/appwrite";
+import { Alert } from "react-native";
+
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -15,8 +18,22 @@ const SignIn = () => {
 
   const [isSubmitting, setisSubmitting] = useState(false)
 
-  const submit = () => {
+  const submit = async() => {
+    if(!form.email || !form.password){
+      Alert.alert('Error',"Please fill in all the details!" )
+    }
+    setisSubmitting(true)
+      try {
+         await signIn(form.email,form.password);
+          
+          // set it to global state...
 
+          router.replace('/home')
+      } catch (error) {
+        Alert.alert('Error', error.message)
+      } finally {
+        setisSubmitting(false)
+      }
   }
 
   return (
