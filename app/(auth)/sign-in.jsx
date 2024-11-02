@@ -13,13 +13,13 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
   const { setUser, setIsLogged } = useGlobalContext();
+  const [isSubmitting, setSubmitting] = useState(false)
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const [isSubmitting, setSubmitting] = useState(false)
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {

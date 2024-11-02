@@ -20,7 +20,7 @@ const SignUp = () => {
     password: "",
   });
 
-  const [isSubmitting, setisSubmitting] = useState(false)
+  const [isSubmitting, setSubmitting] = useState(false)
 
   const submit = async() => {
     if(form.username === "" || form.email === "" || form.password === ""){
@@ -37,7 +37,7 @@ const SignUp = () => {
       } catch (error) {
         Alert.alert('Error', error.message)
       } finally {
-        setisSubmitting(false)
+        setSubmitting(false)
       }
   }
 
@@ -85,8 +85,8 @@ const SignUp = () => {
           />
 
           <View className="justify-center pt-5 flex-row gap-2">
-            <Text className="text-gray-100 text-white font-pregular">Have an account already?</Text>
-                <Link href="/sign-in" className="text-md font-psemibold text-secondary">Sign in</Link>
+            <Text className="text-gray-100 text-lg font-pregular">Have an account already?</Text>
+                <Link href="/sign-in" className="text-md font-psemibold text-secondary"></Link>
           </View>
         </View>
       </ScrollView>
