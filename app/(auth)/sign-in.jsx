@@ -13,8 +13,8 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 
 const SignIn = () => {
   const { setUser, setIsLogged } = useGlobalContext();
-  const [isSubmitting, setSubmitting] = useState(false)
 
+  const [isSubmitting, setSubmitting] = useState(false)
   const [form, setForm] = useState({
     email: "",
     password: "",

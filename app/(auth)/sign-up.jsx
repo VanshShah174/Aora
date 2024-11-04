@@ -26,7 +26,7 @@ const SignUp = () => {
     if(form.username === "" || form.email === "" || form.password === ""){
       Alert.alert('Error',"Please fill in all the details!" )
     }
-    setisSubmitting(true)
+    setSubmitting(true)
       try {
         const result = await createUser(form.email,form.password,
           form.username);
