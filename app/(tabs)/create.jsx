@@ -1,11 +1,18 @@
-import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import FormField  from "../../components/FormField"
 import { Video , ResizeMode } from 'expo-av'
 import { icons } from '../../constants'
 import  CustomButton  from "../../components/CustomButton"
+import * as ImagePicker from "expo-image-picker"
+import {router} from "expo-router"
+import { createVideo } from '../../lib/appwrite'
+import { useGlobalContext} from "../../context/GlobalProvider"
+
 
 const Create = () => {
+
+  const { user } = useGlobalContext();
 
   const [uploading, setUploading] = useState(false);
 
@@ -16,7 +23,51 @@ const Create = () => {
     prompt:''
   })
 
-  const submit = () => {
+  const openPicker = async(selectType) => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: selectType === 'image' ?
+       ImagePicker.MediaTypeOptions.Images
+       :ImagePicker.MediaTypeOptions.Videos,
+      aspect: [4, 3],
+      quality: 1,
+    });      
+
+      if(!result.canceled) {
+        if(selectType === 'image'){
+          setForm({...form, thumbnail: result.assets[0]})
+        }
+        if(selectType === 'video'){
+          setForm({...form, video: result.assets[0]})
+        }
+      }
+  }
+
+  const submit = async() => {
+        if(!form.prompt || !form.title || !form.thumbnail || !form.video){
+          return Alert.alert("Please fill in all the field")
+        }
+
+        setUploading(true)
+
+        try {
+
+          await createVideo({
+            ...form, userId: user.$id
+          })
+
+          Alert.alert('Success','Postr uploaded successfully')
+          router.push('/home')
+        } catch (error) {
+          Alert.alert('Error', error.message)
+        } finally {
+            setForm({
+              title: '',
+              video:'',
+              thumbnail:null,
+              prompt:' '
+            })
+            setUploading(false);
+        }
 
   }
 
@@ -42,14 +93,14 @@ const Create = () => {
             Upload Video
           </Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker('video')}>
             {form.video ? (
               <Video
               source={{ uri: form.video.uri }}
               className="w-full h-64 rounded-2xl"
-              useNativeControls
+              // useNativeControls
               resizeMode={ResizeMode.COVER}
-              isLooping
+              // isLooping
               />
             ) : (
               <View className="w-full h-40 px-4 bg-black-100
@@ -71,7 +122,7 @@ const Create = () => {
             Thumbnail Image
           </Text>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker('image')}> 
             {form.thumbnail? (
                 <Image
                 source={{ uri: form.thumbnail.uri }}
