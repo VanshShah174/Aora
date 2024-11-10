@@ -1,50 +1,74 @@
-# Welcome to your Expo app 👋
+# Aora - Video Sharing App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Build a stunning Video Sharing App using ![image](https://github.com/user-attachments/assets/955f15a0-bf27-4829-a4c6-19594aee9312)
+, **Appwrite**, and **Nativewind** with a seamless user experience. 
 
-## Get started
+---
 
-1. Install dependencies
+## 📋 Table of Contents
+1. 🤖 [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Quick Start](#quick-start)
+5. 🕸️ [Snippets](#snippets)
+6. 🔗 [Links](#links)
+7. 🚀 [More](#more)
+---
 
-   ```bash
-   npm install
-   ```
+## 🤖 Introduction
+Aora is a video-sharing application built using **React Native** and **Appwrite** as a powerful backend. The app emphasizes smooth animations with **Animatable** and styling with **Nativewind**, creating a fluid user experience for sharing and exploring AI-generated videos. The app also incorporates key features like authentication, animated lists, and real-time search, delivering a complete and interactive platform.
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+## ⚙️ Tech Stack
+- **React Native** - Cross-platform mobile application framework
+- **Expo** - Toolchain for building React Native apps
+- **Nativewind** - Styling library for React Native
+- **Animatable** - Animation library for interactive UI
+- **Appwrite** - Backend server for handling authentication, database, and file storage
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🔋 Features
+- **Onboarding Screen**: Engaging graphics to welcome and guide new users.
+- **Authentication System**: Secure login with email and password.
+- **Dynamic Home Screen**: An animated flat list to display videos.
+- **Pull-to-Refresh**: Refresh content with a swipe gesture.
+- **Search**: Full-text search with real-time suggestions.
+- **Tab Navigation**: Easy navigation between Home, Search, and Profile tabs.
+- **Media Uploads**: Post videos or images directly within the app.
+- **Profile Screen**: View account details, uploaded content, and follower count.
+- **Responsive Design**: Optimized for various screen sizes and devices.
+- **Animations**: Smooth transitions and interactions throughout the app.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🤸 Quick Start
+To run the app locally, follow these steps.
 
-When you're ready, run:
+### Prerequisites
+Ensure you have the following installed:
+- **Git**
+- **Node.js**
+- **npm**
 
+### Cloning the Repository
 ```bash
-npm run reset-project
+git clone https://github.com/VanshShah174/aora.git
+cd aora
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Installation
 
-## Learn more
+Install the project dependencies using npm:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install
+```
+Running the project
+```bash
+npm start
+```
+Expo Go
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Download the Expo Go app onto your device, then use it to scan the QR code from Terminal and run.
