@@ -1,7 +1,7 @@
 # Aora - Video Sharing App
 
 Built a stunning Video Sharing App using 
-[image](https://github.com/user-attachments/assets/955f15a0-bf27-4829-a4c6-19594aee9312)
+,![image](https://github.com/user-attachments/assets/955f15a0-bf27-4829-a4c6-19594aee9312)
 , ![image](https://github.com/user-attachments/assets/91e296f7-4f32-4488-9ca5-25f15c6f23d7)
 , ![image](https://github.com/user-attachments/assets/cd519cbc-8f99-4055-8031-df74f76cd926)
  
